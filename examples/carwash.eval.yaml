@@ -1,0 +1,21 @@
+version: 1
+config:
+  profiles:
+    main:
+      harness: pi
+  profile: main
+tests:
+  - name: car-wash-reasoning
+    input:
+      prompt: >
+        I want to wash my car and the car wash place is 15 meters away from me,
+        should I walk or drive?
+    assertions:
+      - left: output
+        op: contains
+        right: drive
+      - review:
+          prompt: >
+            Did the answer correctly choose driving because the car itself
+            needs to be taken to the car wash, instead of only considering the
+            short distance?

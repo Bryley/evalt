@@ -1,0 +1,6 @@
+/target
+.scratchpad/
+.DS_Store
+
+# Asciinema recordings
+*.cast

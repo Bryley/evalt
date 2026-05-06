@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=../evalt.schema.json
+version: 1
+tests:
+  - name: basic-hello
+    desc: Very basic sanity check that the harness returns text.
+    input:
+      prompt: "Say hello in exactly five words."
+    assertions:
+      - left: output
+        op: contains
+        right: "hello"
+  - name: basic-review
+    desc: Ask for a simple explanation and let the AI reviewer judge quality.
+    input:
+      prompt: "Explain why the sky is blue in 2-3 sentences."
+    assertions:
+      - review:
+          prompt: "Does the response correctly explain why the sky appears blue (Rayleigh scattering) in a clear and concise way, using 2-3 sentences?"
+          pass_threshold: 0.7
+  - name: basic-fail-review
+    desc: Ask for a simple explanation and let the AI reviewer judge quality for the wrong question (should fail).
+    input:
+      prompt: "Explain the difference between golang and Rust in 2-3 sentences."
+    assertions:
+      - review:
+          prompt: "Does the response correctly explain why the sky appears blue (Rayleigh scattering) in a clear and concise way, using 2-3 sentences?"
+          pass_threshold: 0.7
+
+

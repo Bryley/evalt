@@ -1,0 +1,4 @@
+[tools]
+"go:github.com/Warashi/cage" = "0.1.13"
+rust = "1.93.0"
+rust-analyzer = "2026-02-02"

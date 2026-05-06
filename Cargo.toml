@@ -1,0 +1,41 @@
+[package]
+name = "evalt"
+version = "0.1.0"
+edition = "2024"
+description = "Portable YAML-defined eval tests for AI agent and model harnesses"
+license = "MIT"
+repository = "https://github.com/Bryley/evalt"
+homepage = "https://github.com/Bryley/evalt"
+readme = "README.md"
+keywords = ["ai", "eval", "agents", "cli", "testing"]
+categories = ["command-line-utilities", "development-tools::testing"]
+
+[dependencies]
+anyhow = "1.0.102"
+clap = { version = "4.6.1", features = ["derive"] }
+crossterm = "0.29.0"
+futures = "0.3.32"
+ignore = "0.4.25"
+indexmap = { version = "2.14.0", features = ["serde"] }
+miette = { version = "7.6.0", features = ["fancy"] }
+owo-colors = "4.2.3"
+rayon = "1.12.0"
+regex = "1.12.3"
+schemars = {version = "0.8.21", features = ["indexmap2"]}
+serde = { version = "1.0.228", features = ["derive", "rc"] }
+serde-saphyr = { version = "0.0.26", features = ["miette"] }
+serde_json = "1.0.145"
+textwrap = "0.16.2"
+tokio = { version = "1.52.2", features = ["full"] }
+users = "0.11.0"
+which = "8.0.3"
+
+[build-dependencies]
+anyhow = "1.0.102"
+schemars = {version = "0.8.21", features = ["indexmap2"]}
+serde = { version = "1.0.228", features = ["derive", "rc"] }
+serde_json = "1.0.145"
+serde-saphyr = { version = "0.0.26", features = ["miette"] }
+regex = "1.12.3"
+miette = { version = "7.6.0", features = ["fancy"] }
+indexmap = { version = "2.14.0", features = ["serde"] }

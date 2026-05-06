@@ -1,0 +1,35 @@
+version: 1
+config: 
+  profile: gpt-mini
+tests:
+  - name: timeout-test
+    config: 
+      run: 
+        timeout_ms: 2000 # Should fail after 2 seconds
+    input:
+      prompt: Give me a poem about AI evals
+    assertions:
+      - left: duration-secs
+        op: <
+        right: 2000
+  - name: max-turns-test
+    config: 
+      run: 
+        max_turns: 5 # Should fail
+    input:
+      prompt: Call the bash command tool 10 times each printing out a quote using "echo <quote>"
+    assertions:
+      - left: turns
+        op: <
+        right: 10
+  - name: max-total-tokens-test
+    config: 
+      run: 
+        budgets: 
+          max_tokens: 50
+    input:
+      prompt: What is the lorem text up to 100 words?
+    assertions:
+      - left: tokens.total
+        op: <
+        right: 50

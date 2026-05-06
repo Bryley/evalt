@@ -1,0 +1,33 @@
+<svg width="330" height="116" viewBox="0 0 330 116" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">evalt logo</title>
+  <desc id="desc">A simple evalt wordmark with a small checklist-style prompt mark.</desc>
+
+  <g transform="translate(0 8)">
+    <!-- minimal agent/eval prompt mark -->
+    <rect x="0" y="2" width="96" height="96" rx="22" fill="#111827" stroke="#F8FAFC" stroke-opacity="0.45" stroke-width="2"/>
+    <path d="M27 36H54" stroke="#E5E7EB" stroke-width="8" stroke-linecap="round"/>
+    <path d="M27 60H44" stroke="#E5E7EB" stroke-width="8" stroke-linecap="round"/>
+    <path d="M56 62L67 73L82 45" stroke="#38D996" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="120" y="78"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="82"
+        font-weight="750"
+        letter-spacing="-3.2"
+        fill="#111827"
+        stroke="#F8FAFC"
+        stroke-opacity="0.55"
+        stroke-width="3"
+        stroke-linejoin="round"
+        paint-order="stroke fill">eval<tspan fill="#38D996">t</tspan></text>
+
+  <text x="126" y="108"
+        font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="18"
+        font-weight="600"
+        letter-spacing="0.8"
+        fill="#64748B"
+        paint-order="stroke fill">Make AI evals simple</text>
+</svg>

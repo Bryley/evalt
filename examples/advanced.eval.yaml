@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=../evalt.schema.json
+version: 1
+tests:
+  - name: advanced-workspace-tool-check
+    desc: Uses workspace setup, tool-call checks, output checks, and optional AI review.
+    workspace:
+      copy:
+        - from: fixtures/todo.txt
+          to: todo.txt
+    input:
+      prompt: >
+        Open todo.txt, add a DONE section with one bullet, and keep existing
+        content, give a summary of what was done.
+    assertions:
+      # output references todo file
+      - left: output
+        op: contains
+        right: "todo"
+      # read tool called
+      - left: tool.called
+        tool_name: read
+        op: "=="
+        right: true
+      # Less than 55 tool calls
+      - left: tool.calls
+        op: "<="
+        right: 55
+      - review:
+          prompt: "Did the assistant make a focused, correct edit to todo.txt without unrelated changes?"
+          pass_threshold: 0.8

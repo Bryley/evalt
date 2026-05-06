@@ -1,0 +1,10 @@
+version: 1
+tests:
+  - name: basic-hello
+    desc: Very basic sanity check that the harness returns text.
+    input:
+      prompt: "Say hello in exactly five words."
+    assertions:
+      - left: output
+        op: contains
+        right: "hello"

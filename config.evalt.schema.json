@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Config",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "description": "Selected profile",
+      "default": null,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profiles": {
+      "description": "List of profiles",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "#/definitions/Profile"
+      }
+    },
+    "reviewer": {
+      "description": "Reviewer config options",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ReviewerConfig"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "run": {
+      "description": "Run options such as budgets and more",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/RunConfig"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Budgets": {
+      "type": "object",
+      "properties": {
+        "max-cost-usd": {
+          "description": "Max cost (if measured) in USD allowed before interupt",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "max-tokens": {
+          "description": "Max number of tokens allowed before interupt",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0.0
+        }
+      }
+    },
+    "Harness": {
+      "type": "string",
+      "enum": [
+        "pi"
+      ]
+    },
+    "Profile": {
+      "type": "object",
+      "required": [
+        "harness"
+      ],
+      "properties": {
+        "extra-args": {
+          "description": "Any extra args to pass into the harness outside the nessessary",
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "harness": {
+          "description": "Harness to use",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Harness"
+            }
+          ]
+        }
+      }
+    },
+    "ReviewerConfig": {
+      "type": "object",
+      "properties": {
+        "default-pass-threshold": {
+          "description": "The default pass threshold to use if not specified",
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "profile": {
+          "description": "The profile to use for reviewing",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "system-prompt": {
+          "description": "Override the system prompt used for reviewing to this",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "RunConfig": {
+      "type": "object",
+      "properties": {
+        "budgets": {
+          "description": "Extra budget settings",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Budgets"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "concurrent-tests": {
+          "description": "The max number of concurrent tests to run at a time (defaults to 10).\n\nNote that this option is a global only option and cannot be set on the testfile or individual test level.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0.0
+        },
+        "max-turns": {
+          "description": "If the test case runs for more turns than this then interupt",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0.0
+        },
+        "timeout-ms": {
+          "description": "If the test case runs for longer than this many miliseconds then interupt",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 0.0
+        }
+      }
+    }
+  }
+}
