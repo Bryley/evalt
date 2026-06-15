@@ -79,15 +79,19 @@ the semantic judgement.
 > The `main` profile uses the Pi agent harness and lets Pi choose the model
 > from your existing local configuration.
 
-Feel free to look in the projects `./examples` folder for more examples.
+Feel free to look in the project's `./examples` folder for more examples.
 
 ## Installation
 
 `evalt` currently supports macOS and Linux.
 
-The tool is currently early and not yet published.
+You can install it via crates.io:
 
-For now, build from source:
+```bash
+cargo install evalt
+```
+
+or build from source:
 
 ```bash
 cargo install --path .
@@ -225,10 +229,10 @@ reviewer: # Reviewer config
 run: # Run configuration options
   concurrent-tests: 10 # The number of tests to run concurrently
   timeout-ms: 120000 # The test timeout in milliseconds
-  max-turns: 20 # The max number of turns before interupt
+  max-turns: 20 # The max number of turns before interrupt
   budgets: # Budget configuration options
-    max-tokens: 2000 # The max number of tokens used in this test before interupt
-    max-cost-usd: 0.10 # The max cost for this test before interupt (if applicable)
+    max-tokens: 2000 # The max number of tokens used in this test before interrupt
+    max-cost-usd: 0.10 # The max cost for this test before interrupt (if applicable)
 ```
 
 > [!WARNING]
@@ -246,15 +250,15 @@ The flow:
 
 1) Discover `*.eval.yaml` files
 1) Validate them against the schema
-1) Run each eval through an adaptor
+1) Run each eval through an adapter
 1) Capture the raw output from the harness and translate it
 1) Use captured data to apply assertions
 1) Output report
 
 ## Roadmap
 
-- Claude Code adaptor
-- More adaptors (Antigravity, Opencode, etc.)
+- Claude Code adapter
+- More adapters (Antigravity, Opencode, etc.)
 - HTML reports
 - CI/CD integrations
 
